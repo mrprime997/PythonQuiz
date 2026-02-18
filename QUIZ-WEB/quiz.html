@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Python Practice Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 10px;
+      padding: 0;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin: 15px 0 5px 0;
+    }
+
+    input {
+      padding: 12px;
+      width: 90%;
+      max-width: 400px;
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 18px;
+      margin-top: 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    #certificate {
+      display: none;
+      margin-top: 30px;
+      border: 4px solid gold;
+      padding: 20px;
+      width: 90%;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 18px;
+      background-color: #fff8dc;
+    }
+
+    #quizBox {
+      width: 95%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  </style>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0K7KTSXGP2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0K7KTSXGP2');
+</script>
+
+</head>
+<body>
+
+<h1>🐍 Python Beginner Practice</h1>
+
+<div id="quizBox">
+  <h3 id="question"></h3>
+  <input type="text" id="answer" placeholder="Type your answer here">
+  <br>
+  <button onclick="nextQuestion()">Next</button>
+</div>
+
+<div id="certificate">
+  <h2>🎓 Quiz Completed</h2>
+  <h3 id="finalScore"></h3>
+</div>
+
+<script>
+var questions = [
+  { q: "Function used to display output?", a: "print()" },
+  { q: "Code to print Hello World", a: "print(\"Hello World\")" },
+  { q: "Data type of x = 10 ?", a: "int" },
+  { q: "Data type of name = \"Sam\" ?", a: "string" },
+  { q: "Data structure using [] ?", a: "list" },
+  { q: "Symbol used for dictionary?", a: "{}" },
+  { q: "IF statement to check x == 5", a: "if x == 5:" },
+  { q: "Keyword when IF fails?", a: "else" },
+  { q: "Function used in for loop 5 times?", a: "range()" },
+  { q: "Loop runs until condition false?", a: "while" },
+  { q: "Keyword to define function?", a: "def" },
+  { q: "Keyword to return value?", a: "return" },
+  { q: "Method to uppercase string?", a: "upper()" },
+  { q: "How to slice first 3 characters?", a: "[0:3]" },
+  { q: "Keyword to create class?", a: "class" },
+  { q: "Special method when object created?", a: "_init_" },
+  { q: "Function to take input?", a: "input()" },
+  { q: "Code to take name input", a: "name = input(\"Enter name: \")" },
+  { q: "Function to find length?", a: "len()" },
+  { q: "Function to check type?", a: "type()" },
+  { q: "Import math module?", a: "import math" },
+  { q: "Function to find square root?", a: "math.sqrt()" },
+  { q: "Mode to read file?", a: "r" },
+  { q: "Method to write file?", a: "write()" }
+];
+
+var current = 0;
+var score = 0;
+
+document.getElementById("question").innerHTML = questions[current].q;
+
+function nextQuestion() {
+    var userAnswer = document.getElementById("answer").value.trim();
+
+    if(userAnswer === "") {
+        alert("Please type your answer before clicking Next!");
+        return;
+    }
+
+    if (userAnswer === questions[current].a) {
+        score++;
+    }
+
+    current++;
+
+    if (current < questions.length) {
+        document.getElementById("question").innerHTML = questions[current].q;
+        document.getElementById("answer").value = "";
+    } else {
+        document.getElementById("quizBox").style.display = "none";
+        document.getElementById("certificate").style.display = "block";
+        document.getElementById("finalScore").innerHTML =
+            "Your Score: " + score + " / " + questions.length;
+    }
+}
+</script>
+
+</body>
+</html>
